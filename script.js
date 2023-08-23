@@ -7,6 +7,7 @@ let displayExpression = document.querySelector('.expression');
 let equals = document.querySelector('#equals')
 let clear = document.querySelector('#clear');
 let zeros = document.querySelector('#double_zero');
+let decimal = document.querySelector('#decimal');
 
 // get num1 and num2
 let numbers = document.querySelectorAll('.number');
@@ -15,7 +16,6 @@ numbers.forEach(number => {
         if (!selectedOp) {
             num1 += number.textContent;
             displayNum.textContent = `${num1}`;
-            console.log(num1);
         } else if (num1 && selectedOp) {
             num2 += number.textContent;
             displayNum.textContent = `${num2}`;
@@ -52,14 +52,24 @@ clear.addEventListener('click', () => {
     displayNum.textContent = "";
 });
 
-//set up double zeros button
+// set up double zeros button
 zeros.addEventListener('click', () => {
-    if (!num2) {
+    if (!selectedOp) {
         num1 += '00';
         displayNum.textContent = `${num1}`;
-        console.log(num1);
-    } else if (num1) {
+    } else if (selectedOp) {
         num2 += '00';
+        displayNum.textContent = `${num2}`;
+    }
+});
+
+// set up functionality for decimal button
+decimal.addEventListener('click', () => {
+    if (!selectedOp) {
+        num1 += ".";
+        displayNum.textContent = `${num1}`;
+    } else if (selectedOp) {
+        num2 += ".";
         displayNum.textContent = `${num2}`;
     }
 });
