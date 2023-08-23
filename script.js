@@ -40,7 +40,10 @@ equals.addEventListener('click', () => {
         num1 = Number(num1);
         num2 = Number(num2);
         displayExpression.textContent = `${num1} ${selectedOp} ${num2} =`;
-        displayNum.textContent = operate(num1, selectedOp, num2); 
+        let result = operate(num1, selectedOp, num2);
+        displayNum.textContent = Math.round(result * 100) / 100;
+        num1 = result;
+        num2 = "";
     }
 });
 
