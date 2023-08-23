@@ -28,6 +28,11 @@ numbers.forEach(number => {
 let operators = document.querySelectorAll('.func');
 operators.forEach(operator => {
     operator.addEventListener('click', () => {
+        if (num1 && selectedOp && num2) {
+            num1 = operate(num1, selectedOp, num2);
+            console.log(num1);
+            num2 = "";
+        }
         selectedOp = operator.textContent;
         displayExpression.textContent = `${num1} ${selectedOp}`;
         displayNum.textContent = "";
@@ -37,8 +42,6 @@ operators.forEach(operator => {
 // set operate function to equals button and display results
 equals.addEventListener('click', () => {
     if (num1 && num2 && selectedOp) {
-        num1 = Number(num1);
-        num2 = Number(num2);
         displayExpression.textContent = `${num1} ${selectedOp} ${num2} =`;
         let result = operate(num1, selectedOp, num2);
         displayNum.textContent = Math.round(result * 100) / 100;
@@ -97,6 +100,8 @@ decimal.addEventListener('click', () => {
 
 // set up functions for expressions
 function operate(num1, selectedOp, num2) {
+    num1 = Number(num1);
+    num2 = Number(num2);
     switch (selectedOp) {
         case '+':
             return num1 + num2;
