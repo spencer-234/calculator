@@ -1,25 +1,25 @@
 // set up variables for numbers and operator
-let num1;
-let num2;
+let num1 = "";
+let num2 = "";
 let operator;
+let displayNum = document.querySelector('.displaynum');
+let displayExpression = document.querySelector('.expression');
+
+// get first number
+let numbers = document.querySelectorAll('.number');
+numbers.forEach(number => {
+    number.addEventListener('click', () => {
+        if (!num2) {
+            num1 += number.textContent;
+            displayNum.textContent = `${num1}`;
+            console.log(num1);
+        }
+    })
+});
+
+// get operator
 
 // set up functions for expressions
-function add(num1, num2) {
-    return num1 + num2;
-};
-
-function subtract(num1, num2) {
-    return num1 - num2;
-};
-
-function multiply(num1, num2) {
-    return num1 * num2;
-};
-
-function divide(num1, num2) {
-    return num1 / num2;
-};
-
 function operate(num1, operator, num2) {
     switch (operator) {
         case '+':
