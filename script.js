@@ -6,6 +6,7 @@ let displayNum = document.querySelector('.displaynum');
 let displayExpression = document.querySelector('.expression');
 let equals = document.querySelector('#equals')
 let clear = document.querySelector('#clear');
+let zeros = document.querySelector('#double_zero');
 
 // get num1 and num2
 let numbers = document.querySelectorAll('.number');
@@ -14,6 +15,7 @@ numbers.forEach(number => {
         if (!selectedOp) {
             num1 += number.textContent;
             displayNum.textContent = `${num1}`;
+            console.log(num1);
         } else if (num1 && selectedOp) {
             num2 += number.textContent;
             displayNum.textContent = `${num2}`;
@@ -27,6 +29,7 @@ operators.forEach(operator => {
     operator.addEventListener('click', () => {
         selectedOp = operator.textContent;
         displayExpression.textContent = `${num1} ${selectedOp}`;
+        displayNum.textContent = "";
     })
 });
 
@@ -49,6 +52,18 @@ clear.addEventListener('click', () => {
     displayNum.textContent = "";
 });
 
+//set up double zeros button
+zeros.addEventListener('click', () => {
+    if (!num2) {
+        num1 += '00';
+        displayNum.textContent = `${num1}`;
+        console.log(num1);
+    } else if (num1) {
+        num2 += '00';
+        displayNum.textContent = `${num2}`;
+    }
+});
+
 // set up functions for expressions
 function operate(num1, selectedOp, num2) {
     switch (selectedOp) {
@@ -63,6 +78,9 @@ function operate(num1, selectedOp, num2) {
             break;
         case '/':
             return num1 / num2;
+            break;
+        case '%':
+            return num1 % num2;
             break;
     }
 };
