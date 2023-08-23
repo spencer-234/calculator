@@ -65,10 +65,10 @@ zeros.addEventListener('click', () => {
 
 // set up functionality for decimal button
 decimal.addEventListener('click', () => {
-    if (!selectedOp) {
+    if (!selectedOp && !(num1.includes("."))) {
         num1 += ".";
         displayNum.textContent = `${num1}`;
-    } else if (selectedOp) {
+    } else if (selectedOp && !(num2.includes("."))) {
         num2 += ".";
         displayNum.textContent = `${num2}`;
     }
