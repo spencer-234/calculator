@@ -8,6 +8,7 @@ let equals = document.querySelector('#equals')
 let clear = document.querySelector('#clear');
 let zeros = document.querySelector('#double_zero');
 let decimal = document.querySelector('#decimal');
+let toggleSign = document.querySelector('#signs');
 
 // get num1 and num2
 let numbers = document.querySelectorAll('.number');
@@ -50,6 +51,23 @@ clear.addEventListener('click', () => {
     selectedOp = "";
     displayExpression.textContent = "";
     displayNum.textContent = "";
+});
+
+// set up button to toggle between positive and negative numbers
+toggleSign.addEventListener('click', () => {
+    if (!selectedOp && num1 > 0) {
+        num1 = `-${num1}`;
+        displayNum.textContent = num1;
+    } else if (selectedOp && num2 > 0) {
+        num2 = `-${num2}`;
+        displayNum.textContent = num2;
+    } else if (!selectedOp && num1 < 0) {
+        num1 = Math.abs(num1)
+        displayNum.textContent = num1;
+    } else if (selectedOp && num2 < 0) {
+        num2 = Math.abs(num2);
+        displayNum.textContent = num2;
+    }
 });
 
 // set up double zeros button
