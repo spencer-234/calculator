@@ -4,14 +4,18 @@ let num2 = "";
 let selectedOp;
 let displayNum = document.querySelector('.displaynum');
 let displayExpression = document.querySelector('.expression');
+let equals = document.querySelector('#equals')
 
-// get first number
+// get num1 and num2
 let numbers = document.querySelectorAll('.number');
 numbers.forEach(number => {
     number.addEventListener('click', () => {
-        if (!num2) {
+        if (!selectedOp) {
             num1 += number.textContent;
             displayNum.textContent = `${num1}`;
+        } else if (num1 && selectedOp) {
+            num2 += number.textContent;
+            displayNum.textContent = `${num2}`;
         }
     })
 });
@@ -22,9 +26,20 @@ operators.forEach(operator => {
     operator.addEventListener('click', () => {
         selectedOp = operator.textContent;
         displayExpression.textContent = `${num1} ${selectedOp}`;
-        console.log(selectedOp);
     })
 });
+
+// set operate function to equals button and display results
+equals.addEventListener('click', () => {
+    if (num1 && num2 && selectedOp) {
+        num1 = Number(num1);
+        num2 = Number(num2);
+        displayExpression.textContent = `${num1} ${selectedOp} ${num2} =`;
+        displayNum.textContent = operate(num1, selectedOp, num2); 
+    }
+});
+
+
 // set up functions for expressions
 function operate(num1, selectedOp, num2) {
     switch (selectedOp) {
