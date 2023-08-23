@@ -5,6 +5,7 @@ let selectedOp;
 let displayNum = document.querySelector('.displaynum');
 let displayExpression = document.querySelector('.expression');
 let equals = document.querySelector('#equals')
+let clear = document.querySelector('#clear');
 
 // get num1 and num2
 let numbers = document.querySelectorAll('.number');
@@ -39,6 +40,14 @@ equals.addEventListener('click', () => {
     }
 });
 
+// set up clear button functionality
+clear.addEventListener('click', () => {
+    num1 = "";
+    num2 = "";
+    selectedOp = "";
+    displayExpression.textContent = "";
+    displayNum.textContent = "";
+});
 
 // set up functions for expressions
 function operate(num1, selectedOp, num2) {
