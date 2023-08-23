@@ -30,7 +30,6 @@ operators.forEach(operator => {
     operator.addEventListener('click', () => {
         if (num1 && selectedOp && num2) {
             num1 = operate(num1, selectedOp, num2);
-            console.log(num1);
             num2 = "";
         }
         selectedOp = operator.textContent;
