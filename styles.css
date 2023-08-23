@@ -1,0 +1,38 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 600px;
+    height: 750px;
+    background-color: grey;
+    margin: 30px auto;
+    padding: 0;
+    flex-direction: column;
+}
+
+.display {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 30px;
+    width: 500px;
+    height: 150px;
+    background-color: white;
+}
+
+.buttons {
+    display: grid;
+    margin-top: 50px;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 1em;
+}
+
+button {
+    font-size: 30px;
+}
